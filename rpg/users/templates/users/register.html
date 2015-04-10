@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href= "{% static 'users/users.css' %}">
+</head>
+    <body>
+        <div class = "header">
+            <h1 class = "heading">Registration</h1>
+            <form name="user" action="/users/register/" method="POST">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </body>
+</html>

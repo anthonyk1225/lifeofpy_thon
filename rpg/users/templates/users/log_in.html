@@ -1,19 +1,14 @@
-{% load staticfiles %}
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href= "{% static 'users/users.css' %}">
-</head>
-    <body>
-        <div class = "header">
-            <h1 class = "heading">Log In</h1>
-            <form name="user" action="/users/log_in/" method="POST">
-                {% csrf_token %}
-                {{ form.as_table }}
-                <input type="submit" value="Log In">
-            </form>
-            {% if error %}
-                <h3 class="heading">{{ error }}</h3>
-            {% endif %}
-        </div>
-    </body>
-</html>
+{% extends "users/base.html" %}
+    {% block content %}
+    <div class = "header">
+        <h1 class = "heading">Log In</h1>
+        <form name="user" action="/users/log_in/" method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <input type="submit" value="Log In">
+        </form>
+        {% if error %}
+            <h3 class="heading">{{ error }}</h3>
+        {% endif %}
+    </div>
+    {% endblock %}

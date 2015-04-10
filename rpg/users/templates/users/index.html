@@ -1,13 +1,8 @@
-{% load staticfiles %}
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href= "{% static 'users/users.css' %}">
-</head>
-    <body>
-        <div class = "header">
-            <h1 class = "heading">Sessions Home</h1>
-            <a href="/users/log_in/">Log In</a>
-            <a href="/users/register/">Register</a>
-        </div>
-    </body>
-</html>
+{% extends "users/base.html" %}
+	{% block content %}
+	<div class = "header">
+		<h1 class = "heading">Life of py_thon</h1>
+		<a href="/users/log_in/">Log In</a>
+		<a href="/users/register/">Register</a>
+	</div>
+	{% endblock %}

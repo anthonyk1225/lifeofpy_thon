@@ -1,7 +1,7 @@
 from django.db import models
-from models.character import Character
 
 # Create your models here.
 class Attack(models.Model):
-    name = models.CharField(max_length=40,unique=True)
+    name = models.CharField(max_length=100,unique=True)
+    element = models.CharField(max_length=100)
     

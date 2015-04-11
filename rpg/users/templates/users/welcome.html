@@ -1,6 +1,15 @@
 {% extends "users/base.html" %}
+
+{% block header %}
+    <div>
+    	<form id='exit' name="exit" action="/rpg/log_out/">
+    		<input type="submit" value="Logout">
+    	</form>
+    </div>
+{% endblock %}
+
 {% block content %}
 <div class = "header">
-    <h1 class = "heading">Welcome back {{ username }}!</h1>
+    <h1 class = "heading">Welcome {{ username }}!</h1>
 </div>
 {% endblock %}

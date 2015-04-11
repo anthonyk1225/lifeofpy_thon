@@ -11,7 +11,7 @@ class Character(models.Model):
     attack = models.ManyToManyField(Attack)
     user = models.ForeignKey(User)
 
-class Atttributes(models.Model):
+class Attribute(models.Model):
 	hit_points = models.IntegerField()
 	attack = models.IntegerField()
 	defense = models.IntegerField()

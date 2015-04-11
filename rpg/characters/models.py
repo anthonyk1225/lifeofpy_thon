@@ -14,5 +14,4 @@ class Character(models.Model):
 class Attribute(models.Model):
 	hit_points = models.IntegerField()
 	attack = models.IntegerField()
-	defense = models.IntegerField()
 	character = models.ForeignKey(Character)

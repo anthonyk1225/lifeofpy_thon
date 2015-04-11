@@ -47,7 +47,7 @@ class RegisterView(View):
             user = User(username=request.POST['username'], password=hashed)
             user.save()
             request.session['user_id'] = user.id
-            return render(request, 'rpg/welcome.html',{'username': user.username})
+            return render(request, 'users/welcome.html',{'username': user.username})
         return redirect('/rpg/log_in/')
 
 class WelcomeView(View):

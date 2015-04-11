@@ -9,18 +9,20 @@
          --><link rel="stylesheet" href="{% static 'users/users.css' %}">
     </head>
     <body>
-        <div class = "container">
+        <div class ="container-fluid">
             <header>
                 {% block header %}
                 {% endblock %}
             </header>
-            <div class = "content">
+            <div class ="content">
                 {% block content %}
                 {% endblock %}
             </div>
 
             <footer>
                 {% block footer %}
+                <div id='footer' class="navbar navbar-fixed-bottom">
+                </div>
                 {% endblock %}
             </footer>
         </div>

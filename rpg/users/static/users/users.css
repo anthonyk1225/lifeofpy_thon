@@ -4,10 +4,18 @@
 
 h1.heading{
     color: black;
-    display: inline;
+    float: right;
 }
 
 a{
     text-decoration: none;
     margin-left: 1em;
+}
+
+#boromir{
+	margin-top:5em;
+}
+
+#footer{
+	background-color: #001f3f;
 }

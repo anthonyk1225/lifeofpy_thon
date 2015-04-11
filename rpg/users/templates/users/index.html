@@ -1,11 +1,15 @@
 {% extends "users/base.html" %}
-	{% block content %}
-    <nav class='navbar navbar-default navbar-static-top'>
+
+    {% block header %}
+	<nav class='navbar navbar-default navbar-static-top'>
 	<div class = "header">
-		<h1 class = "heading">Life of py_thon</h1>	
-		<a href="/rpg/log_in/">Log In</a>
-		<a href="/rpg/register/">Register</a>
+	<h1 class = "heading">Life of py_thon</h1>	
+	<a href="/rpg/log_in/">Log In</a>
+	<a href="/rpg/register/">Register</a>
 	</div>
+    {% endblock %}
+    {% block content %}
+
 
 	<div>
 		<img src="http://blogs-images.forbes.com/erikkain/files/2014/09/shadow-of-mordro.jpg" class="img-circle center-block img-responsive" width='1000'>

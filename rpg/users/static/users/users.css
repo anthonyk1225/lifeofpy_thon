@@ -1,5 +1,5 @@
-.header{
-    border-bottom: 2px solid black;
+.navbar{
+    border-bottom: 3px solid black;
 }
 
 h1.heading{
@@ -18,5 +18,9 @@ a{
 
 #footer{
 	background-color: #001f3f;
-    opacity: 0.5;
+	opacity: .5;
+}
+
+#classes h2{
+	text-align: center;
 }

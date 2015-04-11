@@ -7,6 +7,11 @@ h1.heading{
     float: right;
 }
 
+#header{
+	background-color: #001f3f;
+	opacity: .4;
+}
+
 a{
     text-decoration: none;
     margin-left: 1em;
@@ -16,11 +21,11 @@ a{
 	margin-top:4em;
 }
 
-#footer{
-	background-color: #001f3f;
-	opacity: .5;
-}
-
 #classes h2{
 	text-align: center;
+}
+
+#footer {
+	background-color: #001f3f;
+	opacity: .4;
 }

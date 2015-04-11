@@ -8,5 +8,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^rpg/', include('users.urls')),
-    url(r'^char/', include('characters.urls'))
+    url(r'^char/', include('characters.urls')),
 )

@@ -26,7 +26,7 @@ class LogInView(View):
             user[0].save()
             request.session['user_id']=user[0].id
             return redirect('/rpg/welcome/')
-        return render(request, self.template_name,{'error': 'Invalid Username or Password'})
+        return render(request, self.template_name, {'error': 'Invalid Username or Password','form': self.form_class()})
     
 class LogOutView(View):
     def get(self, request):
@@ -59,6 +59,13 @@ class WelcomeView(View):
         # request.session.set_expiry(120)
         user = User.objects.get(id=request.session['user_id'])
         return render(request, self.template, {'username': user.username})
+
+class ChooseCharView(View):
+    template_name = 'characters/characters.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
 
 
 

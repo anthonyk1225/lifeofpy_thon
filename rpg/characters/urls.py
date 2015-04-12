@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'form_practice.views.home', name='home'),

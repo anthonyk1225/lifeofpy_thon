@@ -11,7 +11,7 @@
         <p>{{username}}'s Heros</p>
         {% if characters %}
             {% for character in characters %}
-            <li><a href = "/{{ username }}/{{ character }}">{{character}}</a></li>
+            <li><a href = "/rpg/{{ character }}">{{character}}</a></li>
             {% endfor %}
         {% else %}
         <p>No characters made yet</p>

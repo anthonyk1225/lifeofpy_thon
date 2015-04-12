@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from users.views import LogInView,RegisterView,IndexView,WelcomeView,LogOutView,ChooseCharView
+from users.views import LogInView,RegisterView,IndexView,WelcomeView,LogOutView,ChooseCharView, HeroView
+import users.views as view
 
 urlpatterns = patterns('',
     # Examples:
@@ -12,4 +13,6 @@ urlpatterns = patterns('',
     url(r'^log_in/$', LogInView.as_view(),name='log_in'),
     url(r'^log_out/$', LogOutView.as_view(),name='log_out'),
     url(r'^character_selection/$', ChooseCharView.as_view(), name='createchar'),
+	url(r'^(?P<name>)[\w\-]+', HeroView.as_view(), name='get'),
+
 )

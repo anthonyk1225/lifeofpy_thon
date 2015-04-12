@@ -4,7 +4,7 @@ from attacks.models import Attack
 
 # Create your models here.
 class Character(models.Model):
-	name = models.CharField(max_length=40,unique=True)
+	name = models.CharField(max_length=40)
 	race = models.CharField(max_length=80)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
@@ -12,7 +12,7 @@ class Character(models.Model):
 	user = models.ForeignKey(User)
 
 class Enemy(models.Model):
-	name = models.CharField(max_length=40,unique=True)
+	name = models.CharField(max_length=40)
 	race = models.CharField(max_length=80)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)

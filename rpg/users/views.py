@@ -27,7 +27,7 @@ class LogInView(View):
             request.session['user_id']=user[0].id
             return redirect('/rpg/welcome/')
         return render(request, self.template_name, {'error': 'Invalid Username or Password','form': self.form_class()})
-    
+
 class LogOutView(View):
     def get(self, request):
         request.session.flush()
@@ -65,8 +65,3 @@ class ChooseCharView(View):
 
     def get(self, request):
         return render(request, self.template_name)
-
-
-
-
-

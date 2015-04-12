@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.hashers import make_password,check_password
 from users.forms import UserForm
 from users.models import User
+from characters.models import Character
 
 # Create your views here.
 class IndexView(View):
@@ -27,7 +28,7 @@ class LogInView(View):
             request.session['user_id']=user[0].id
             return redirect('/rpg/welcome/')
         return render(request, self.template_name, {'error': 'Invalid Username or Password','form': self.form_class()})
-    
+
 class LogOutView(View):
     def get(self, request):
         request.session.flush()
@@ -53,12 +54,14 @@ class RegisterView(View):
 class WelcomeView(View):
     template = 'users/welcome.html'
 
-    def get(self, request):
+    def get(self,request):
         if not request.session.get('user_id', False):
             return redirect('/rpg/')
         # request.session.set_expiry(120)
         user = User.objects.get(id=request.session['user_id'])
-        return render(request, self.template, {'username': user.username})
+        user_characters = Character.objects.filter(user_id=user.id)
+        characters = [character.name for character in user_characters]
+        return render(request, self.template, {'username': user.username, 'characters':characters})
 
 class ChooseCharView(View):
     template_name = 'characters/characters.html'
@@ -67,6 +70,10 @@ class ChooseCharView(View):
         return render(request, self.template_name)
 
 
+class HeroView(View):
+    template_name = 'characters/hero.html'
 
-
-
+    def get(self,request,name):
+        name = request.GET
+        character = Character.objects.get(name=name)
+        return render(request, self.template, {'character':character})

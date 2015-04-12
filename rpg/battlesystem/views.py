@@ -4,4 +4,4 @@ from characters.
 # Create your views here.
 
 class BattleStart(View):
-    
+    pass

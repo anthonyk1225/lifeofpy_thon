@@ -1,4 +1,5 @@
 from django.db import models
+from characters.models import Character
 
 # Create your models here.
 class Battle(models.Model):

@@ -9,12 +9,16 @@ h1.heading{
 
 header{
 	background-color: #001f3f;
-	opacity: .4;
+	opacity: 1;
 }
 
 a{
     text-decoration: none;
     margin-left: 1em;
+}
+
+.user{
+    display: none;
 }
 
 #boromir{
@@ -25,7 +29,11 @@ a{
 	text-align: center;
 }
 
-#footer {
+footer {
 	background-color: #001f3f;
 	opacity: .4;
+}
+
+form label{
+    color:white;
 }

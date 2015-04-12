@@ -15,9 +15,9 @@
     {% block scripts %}
 
         <script id="logIn" type="text/html">
-            <div id="logInForm">
-            <h1 class = "heading">Log In</h1>
-            <form name="user" action="/rpg/log_in/" method="POST">
+            <div>
+            <h1 class="heading">Log In</h1>
+            <form id="logInForm" name="user" action="/rpg/log_in/" method="POST">
                 {% csrf_token %}
                 {{ form.as_table }}
                 <input type="submit" value="Log In">
@@ -29,20 +29,18 @@
         </script>
 
         <script id="register" type="text/html">
-            <div id="registerForm">
-            <h1 class = "heading">Registration</h1>
-            <form name="user" action="/rpg/register/" method="POST">
+            <div>
+            <h1 class="heading">Registration</h1>
+            <form id="registerForm" name="user" action="/rpg/register/" method="POST">
                 {% csrf_token %}
                 {{ form.as_table }}
                 <input type="submit" value="Register">
             </form>
             </div>
         </script>
-
-        <script id="userWelcome" type="text/html">
+        {%verbatim%}
+        <script id="userGreeting" type="text/html">
             <h1 class="heading">Welcome {{ username }}!</h1>
-            <ul>
-
-            </ul>
         </script>
+        {%endverbatim%}
     {% endblock %}

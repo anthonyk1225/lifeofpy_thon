@@ -6,8 +6,8 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <!-- <script src="{%static "users/api.js"%}"></script>
-         --><link rel="stylesheet" href="{% static 'users/users.css' %}">
+        <script src="{%static "users/users.js"%}"></script>
+        <link rel="stylesheet" href="{% static 'users/users.css' %}">
     </head>
     <body>
         <div class ="container-fluid">
@@ -15,10 +15,11 @@
                 <nav class='navbar navbar-default navbar-static-top'>
                 <h1 class = "heading">Life of py_thon</h1>
                 <!-- Rename these classes -->
-                <a class="noUser" href="/rpg/log_in/">Log In</a>
-                <a class="noUser" href="/rpg/register/">Register</a>
+                <a id="logInLink" class="noUser" href="/rpg/log_in/">Log In</a>
+                <a id="registerLink" class="noUser" href="/rpg/register/">Register</a>
                 {% block header %}                   
                 {% endblock %}
+                </nav>
             </header>
             <div class ="content">
                 {% block content %}

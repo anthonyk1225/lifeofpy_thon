@@ -7,7 +7,7 @@ h1.heading{
     float: right;
 }
 
-#header{
+header{
 	background-color: #001f3f;
 	opacity: .4;
 }

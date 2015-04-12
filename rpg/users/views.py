@@ -6,10 +6,11 @@ from users.models import User
 
 # Create your views here.
 class IndexView(View):
+    form_class = UserForm
     template = 'users/index.html'
     def get(self,request):
         request.session.flush()
-        return render(request, self.template)
+        return render(request, self.template,{'form': self.form_class()})
 
 class LogInView(View):
     form_class = UserForm

@@ -1,17 +1,48 @@
 {% extends "users/base.html" %}
 
     {% block header %}
-	<nav class='navbar navbar-default navbar-static-top'>
-	<div class = "header">
-	<h1 class = "heading">Life of py_thon</h1>	
-	<a href="/rpg/log_in/">Log In</a>
-	<a href="/rpg/register/">Register</a>
-	</div>
+        <!-- We might want to move these to the base.html -->
+        <a class="user" href='/rpg/character_selection/'>Make a new character</a>
+        <a class="user" href="/rpg/log_out/">Log Out</a>	
     {% endblock %}
     {% block content %}
-
 
 	<div>
 		<img src="http://blogs-images.forbes.com/erikkain/files/2014/09/shadow-of-mordro.jpg" class="img-circle center-block img-responsive" width='1000'>
 	</div>
 	{% endblock %}
+
+    {% block scripts %}
+
+        <script id="logIn" type="text/html">
+            <div id="logInForm">
+            <h1 class = "heading">Log In</h1>
+            <form name="user" action="/rpg/log_in/" method="POST">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <input type="submit" value="Log In">
+            </form>
+            {% if error %}
+            <h3 class="heading">{{ error }}</h3>
+            {% endif %}
+            </div>
+        </script>
+
+        <script id="register" type="text/html">
+            <div id="registerForm">
+            <h1 class = "heading">Registration</h1>
+            <form name="user" action="/rpg/register/" method="POST">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <input type="submit" value="Register">
+            </form>
+            </div>
+        </script>
+
+        <script id="userWelcome" type="text/html">
+            <h1 class="heading">Welcome {{ username }}!</h1>
+            <ul>
+
+            </ul>
+        </script>
+    {% endblock %}

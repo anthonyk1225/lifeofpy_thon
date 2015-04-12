@@ -7,4 +7,14 @@
 <ul>
 <a href='/rpg/character_selection/'>Make a new character</a>
 </ul>
+    <div class "characters">
+        <p>{{username}}'s Heros</p>
+        {% if characters %}
+            {% for character in characters %}
+            <li><a href = "/rpg/{{ character }}">{{character}}</a></li>
+            {% endfor %}
+        {% else %}
+        <p>No characters made yet</p>
+        {% endif %}
+    </div>
 {% endblock %}

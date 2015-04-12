@@ -1,0 +1,44 @@
+.navbar{
+    border-bottom: 3px solid black;
+}
+
+h1.heading{
+    color: black;
+    float: right;
+}
+
+header{
+	background-color: #001f3f;
+	opacity: 1;
+}
+
+a{
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.user{
+    display: none;
+}
+
+#boromir{
+	margin-top:4em;
+}
+
+#classes h2{
+	text-align: center;
+}
+
+footer {
+	background-color: #001f3f;
+	opacity: .4;
+}
+
+form label{
+    color:white;
+}
+p{
+    font-size: 3em;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}

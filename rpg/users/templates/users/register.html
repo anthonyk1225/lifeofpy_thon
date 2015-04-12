@@ -1,8 +1,0 @@
-<script id="register" type="text/html">
-	<h1 class = "heading">Registration</h1>
-	<form name="user" action="/rpg/register/" method="POST">
-		{% csrf_token %}
-		{{ form.as_table }}
-		<input type="submit" value="Register">
-	</form>
-</script>

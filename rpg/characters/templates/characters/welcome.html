@@ -1,0 +1,18 @@
+{% extends "characters/base.html" %}
+    
+    {% block scripts %}
+        <script id="welcomePage" type="text/html">
+            <h1 class="heading">Welcome {{ username }}!</h1>
+            <div class="characters">
+                <p>{{ username }} Heros</p>
+                {% verbatim %}
+                {{#characters}}
+                    <li><a href = "/rpg/{{ id }}">{{name}}</a></li>
+                {{/characters}}
+                {{^characters}}
+                <p>No characters made yet</p>
+                {{/characters}}
+                {% endverbatim %}
+            </div>
+        </script>
+    {% endblock %}

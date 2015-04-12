@@ -1,10 +1,4 @@
 {% extends "users/base.html" %}
-
-    {% block header %}
-        <!-- We might want to move these to the base.html -->
-        <a class="user" href='/rpg/character_selection/'>Make a new character</a>
-        <a class="user" href="/rpg/log_out/">Log Out</a>	
-    {% endblock %}
     {% block content %}
 
 	<div>
@@ -13,7 +7,6 @@
 	{% endblock %}
 
     {% block scripts %}
-
         <script id="logIn" type="text/html">
             <div>
             <h1 class="heading">Log In</h1>
@@ -38,9 +31,4 @@
             </form>
             </div>
         </script>
-        {%verbatim%}
-        <script id="userGreeting" type="text/html">
-            <h1 class="heading">Welcome {{ username }}!</h1>
-        </script>
-        {%endverbatim%}
     {% endblock %}

@@ -5,24 +5,23 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <!-- <script src="{%static "users/api.js"%}"></script>
-         --><link rel="stylesheet" href="{% static 'users/users.css' %}">
+        <script src="{%static "characters/characters.js"%}"></script>
+         <link rel="stylesheet" href="{% static "characters/characters.css" %}">
     </head>
     <body>
         <div class ="container-fluid">
             <header>
                 {% block header %}
                 <nav class='navbar navbar-default navbar-static-top'>
-                <div class = "header">
+                    <a class="user" href='/characters/character_selection/'>Make a new character</a>
+                    <a class="user" href="/users/log_out/">Log Out</a>    
+                </nav>
+                <div class="header">
                 <h1 class = "heading">Life of py_thon</h1>
-                    <div>
-            <form id='exit' name="exit" action="/rpg/log_out/">
-                <input type="submit" value="Logout">
-            </form>
-            </div>
-            {% endblock %}
+                </div>
+                {% endblock %}
             </header>
-            <div class ="content">
+            <div class="content">
                 {% block content %}
                 {% endblock %}
             </div>
@@ -31,6 +30,8 @@
                 {% block footer %}
                 {% endblock %}
             </footer>
+            {% block scripts %}
+            {% endblock %}
         </div>
     </body>
 </html>

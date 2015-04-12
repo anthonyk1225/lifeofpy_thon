@@ -14,26 +14,4 @@ $(document).ready(function(){
         var output = Mustache.render(template);
         $('header').append(output)
     });
-
-    $(document).on('submit','#logInForm',function(event){
-        event.preventDefault();
-        var template = $('#userGreeting').html();
-        var output = Mustache.render(template,{username:  $('input[name=username]').val()})
-        $('header div:last-child').remove();
-        $('header').append(output)
-        $('.user').css({'display':'inline-block'})
-        $('.guest').css({'display':'none'})
-    });
-
-    $(document).on('submit','#registerForm',function(event){
-        event.preventDefault();
-        var template = $('#userGreeting').html();
-        var username = $('input[name=username]').val();
-        var output = Mustache.render(template,{username:  $('input[name=username]').val()})
-        $('header div:last-child').remove();
-        $('header').append(output)
-        $('.user').css({'display':'inline-block'})
-        $('.guest').css({'display':'none'})
-    });
-
 });

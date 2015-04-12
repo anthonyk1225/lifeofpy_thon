@@ -10,7 +10,7 @@
         <script id="logIn" type="text/html">
             <div>
             <h1 class="heading">Log In</h1>
-            <form id="logInForm" name="user" action="/rpg/log_in/" method="POST">
+            <form id="logInForm" name="user" action="/users/log_in/" method="POST">
                 {% csrf_token %}
                 {{ form.as_table }}
                 <input type="submit" value="Log In">
@@ -24,7 +24,7 @@
         <script id="register" type="text/html">
             <div>
             <h1 class="heading">Registration</h1>
-            <form id="registerForm" name="user" action="/rpg/register/" method="POST">
+            <form id="registerForm" name="user" action="/users/register/" method="POST">
                 {% csrf_token %}
                 {{ form.as_table }}
                 <input type="submit" value="Register">

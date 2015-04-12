@@ -16,7 +16,7 @@ class IndexView(View):
 
 class LogInView(View):
     form_class = UserForm
-
+    
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']

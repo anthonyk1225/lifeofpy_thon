@@ -21,3 +21,11 @@ def create_paladin(request):
 	new_char = Character.objects.create(race='paladin', name=request.POST['name'], user=current_user[0])
 	Attribute.objects.create(hit_points=54,attack=3,character=new_char)
 	return redirect('rpg/welcome')
+
+class HeroView(View):
+    template_name = 'characters/hero.html'
+
+    def get(self,request,name):
+        name = request.GET.get(name=name)
+        character = Character.objects.get(name=name)
+        return render(request, self.template, {'character':character})

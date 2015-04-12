@@ -54,7 +54,7 @@ class RegisterView(View):
 class WelcomeView(View):
     template = 'users/welcome.html'
 
-    def get(self,request,username):
+    def get(self,request):
         if not request.session.get('user_id', False):
             return redirect('/rpg/')
         # request.session.set_expiry(120)

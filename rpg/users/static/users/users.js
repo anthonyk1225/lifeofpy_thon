@@ -21,6 +21,8 @@ $(document).ready(function(){
         var output = Mustache.render(template,{username:  $('input[name=username]').val()})
         $('header div:last-child').remove();
         $('header').append(output)
+        $('.user').css({'display':'inline-block'})
+        $('.guest').css({'display':'none'})
     });
 
     $(document).on('submit','#registerForm',function(event){
@@ -30,6 +32,8 @@ $(document).ready(function(){
         var output = Mustache.render(template,{username:  $('input[name=username]').val()})
         $('header div:last-child').remove();
         $('header').append(output)
+        $('.user').css({'display':'inline-block'})
+        $('.guest').css({'display':'none'})
     });
 
 });

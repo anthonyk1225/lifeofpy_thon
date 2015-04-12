@@ -63,17 +63,20 @@ class WelcomeView(View):
         characters = [character.name for character in user_characters]
         return render(request, self.template, {'username': user.username, 'characters':characters})
 
+class InitateFightView(View):
+    def get(self,request):
+        return redirect('/fight/')
+
 class ChooseCharView(View):
     template_name = 'characters/characters.html'
 
     def get(self, request):
         return render(request, self.template_name)
 
+# class HeroView(View):
+#     template_name = 'characters/hero.html'
 
-class HeroView(View):
-    template_name = 'characters/hero.html'
-
-    def get(self,request,name):
-        name = request.GET
-        character = Character.objects.get(name=name)
-        return render(request, self.template, {'character':character})
+#     def get(self,request,name):
+#         name = request.GET
+#         character = Character.objects.get(name=name)
+#         return render(request, self.template, {'character':character})

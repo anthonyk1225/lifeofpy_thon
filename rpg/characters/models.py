@@ -4,12 +4,19 @@ from attacks.models import Attack
 
 # Create your models here.
 class Character(models.Model):
-    name = models.CharField(max_length=40,unique=True)
-    race = models.CharField(max_length=80)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    attack = models.ManyToManyField(Attack)
-    user = models.ForeignKey(User)
+	name = models.CharField(max_length=40,unique=True)
+	race = models.CharField(max_length=80)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	attack = models.ManyToManyField(Attack)
+	user = models.ForeignKey(User)
+
+class Enemy(models.Model):
+	name = models.CharField(max_length=40,unique=True)
+	race = models.CharField(max_length=80)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	attack = models.ManyToManyField(Attack)
 
 class Attribute(models.Model):
 	hit_points = models.IntegerField()

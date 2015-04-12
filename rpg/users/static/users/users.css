@@ -37,3 +37,8 @@ footer {
 form label{
     color:white;
 }
+p{
+    font-size: 3em;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+}

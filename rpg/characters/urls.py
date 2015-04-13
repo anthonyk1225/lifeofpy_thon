@@ -10,6 +10,6 @@ urlpatterns = patterns('',
 	url(r'^warrior/$', 'characters.views.create_warrior', name='createchar'),
 	url(r'^mage/$', 'characters.views.create_warrior', name='createchar'),
 	url(r'^paladin/$', 'characters.views.create_warrior', name='createchar'),
-	url(r'^(?P<name>)[\w\-]+', HeroView.as_view(), name='get'),
+	url(r'^(?P<name>[\w\-]+)', HeroView.as_view(), name='get'),
 
 )

@@ -68,12 +68,3 @@ class ChooseCharView(View):
 
     def get(self, request):
         return render(request, self.template_name)
-
-
-class HeroView(View):
-    template_name = 'characters/hero.html'
-
-    def get(self,request,name):
-        name = request.GET
-        character = Character.objects.get(name=name)
-        return render(request, self.template, {'character':character})

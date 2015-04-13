@@ -23,9 +23,11 @@ def create_paladin(request):
 	return redirect('rpg/welcome')
 
 class HeroView(View):
-    template_name = 'characters/hero.html'
+	template_name = 'characters/hero.html'
 
-    def get(self,request,name):
-        name = request.GET.get(name=name)
-        character = Character.objects.get(name=name)
-        return render(request, self.template, {'character':character})
+	def get(self,request,name):
+		character = Character.objects.get(name=name)
+		character_attributes = Attribute.objects.filter(character_id=character.id)
+		attributes = [attribute for attribute in character_attributes]
+		# return render(request, self.template, {'username': user.username, 'characters':characters})
+		return render(request, self.template_name, {'character':character, 'attributes':attributes})

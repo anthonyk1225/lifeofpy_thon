@@ -1,0 +1,54 @@
+.navbar{
+    border-bottom: 3px solid black;
+}
+
+#hero{
+	float: left;
+}
+
+#villian{
+	float:right;
+}
+
+h1.heading{
+    color: black;
+    float: right;
+}
+
+#update{
+	padding: 2em;
+	clear: both;
+	font-size: 4em;
+	text-align: center;
+}
+
+header{
+	background-color: #001f3f;
+	opacity: 1;
+}
+
+a{
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+#boromir{
+	margin-top:4em;
+}
+
+#classes h2{
+	text-align: center;
+}
+
+footer {
+	background-color: #001f3f;
+	opacity: .4;
+}
+
+form label{
+    color:white;
+}
+p{
+    font-size: 3em;
+    font-weight: bold;
+}

@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     $('.btn-primary').on('click', function(event){
     	event.preventDefault();
 	    var villianHealth = $('#villianhealth')[0].innerHTML

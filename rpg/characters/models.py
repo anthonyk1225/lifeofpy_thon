@@ -1,17 +1,31 @@
 from django.db import models
 from users.models import User
 from attacks.models import Attack
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 # Create your models here.
 class Character(models.Model):
     name = models.CharField(max_length=40)
     race = models.CharField(max_length=80)
+    attack = models.ManyToManyField(Attack)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    attack = models.ManyToManyField(Attack)
     user = models.ForeignKey(User)
 
-class Attribute(models.Model):
-	hit_points = models.IntegerField()
-	attack = models.IntegerField()
-	character = models.ForeignKey(Character)
+class Enemy(models.Model):
+    name = models.CharField(max_length=40)
+    race = models.CharField(max_length=80)
+    attack = models.ManyToManyField(Attack)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class HeroAttribute(models.Model):
+    hit_points = models.IntegerField()
+    power = models.IntegerField()
+    character = models.ForeignKey(Character)
+
+class EnemyAttribute(models.Model):
+    hit_points = models.IntegerField()
+    power = models.IntegerField()
+    character = models.ForeignKey(Enemy)

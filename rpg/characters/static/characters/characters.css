@@ -38,3 +38,6 @@ p{
     border-bottom: 1px solid black;
     font-weight: bold;
 }
+.pic {
+    float: left;
+}

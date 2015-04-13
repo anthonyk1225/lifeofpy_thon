@@ -41,3 +41,8 @@ p{
 .pic {
     float: left;
 }
+.description {
+    float:left;
+    font-size: .45em;
+    font-family: 'IM Fell English SC', serif;
+    }

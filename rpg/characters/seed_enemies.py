@@ -12,4 +12,3 @@ def create_enemies():
         new_enemy.attack = attack
         new_enemy.save()
         EnemyAttribute.objects.create(hit_points=random.randint(20,40), power=random.randint(2,7), character=new_enemy)
-

@@ -4,8 +4,10 @@
     <h1>Name: {{character.name}}</h1>
         <p>Type: {{character.race}}</p>
     <ul>
+        {%for attribute in attributes%}
         <li>Hit Points: {{attributes.hit_points}}</li>
         <li>Power: {{attributes.power}}</li>
+        {%endfor%}
         {% for attack in attacks %}
         <li>Attack Name: {{attack.name}} </li>
         <li>Attack Type: {{attack.element}} </li>

@@ -64,3 +64,6 @@ class HeroView(View):
         hit_points = [attribute.hit_points for attribute in character_attributes]
         attack = [attribute.attack for attribute in character_attributes]
         return render(request, self.template_name, {'character':character, 'hit_points':hit_points, 'attack':attack})
+
+class DeleteView(View):
+    pass

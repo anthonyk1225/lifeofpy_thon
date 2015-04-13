@@ -1,6 +1,23 @@
-{% extends "users/base.html" %}
+{% extends "characters/base.html" %}
 
 {% block content %}
-<h1>{character.name}</h1>
-<p>{{character.race}}</p>
-{%endblock%}
+    <h1>Name: {{character.name}}</h1>
+        <p>Type: {{character.race}}</p>
+    <ul>
+        <li>Hit Points: {{attributes.hit_points}}</li>
+        <li>Power: {{attributes.power}}</li>
+        {% for attack in attacks %}
+        <li>Attack Name: {{attack.name}} </li>
+        <li>Attack Type: {{attack.element}} </li>
+        {% endfor %}
+    </ul>
+    <div class = 'pic'>
+    {% if character.race == 'warrior' %}
+    <img id='warrior' src='https://d1nneesl1sywb9.cloudfront.net/global/includes/images/hero-warrior.jpg' height='300' class='img-circle image-responive center-block'></a>
+    {% elif character.race == 'mage' %}
+    <img id='mage' src='http://th01.deviantart.net/fs71/PRE/i/2014/021/5/4/mage_by_josearias-d6ckiyf.jpg' height='300' class='img-circle image-responive center-block'></a>
+    {% else %}
+    <img id='paladin' src='http://www.primagames.com/media/images/news/Hearthstone-Paladin.jpg' height='300' class='img-circle image-responive center-block'></a>
+    </div>
+    {% endif %}
+{% endblock %}

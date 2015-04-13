@@ -22,7 +22,7 @@ class CharacterListView(View):
     def get(self, request):
         user_characters = Character.objects.filter(user__pk=request.session['user_id'])
         characters = [{'id':character.id,'name':character.name} for character in user_characters]
-        return JsonResponse({'characters':characters})
+        return JsonResponse({'characters': characters})
 
 class ChooseCharView(View):
     template_name = 'characters/characters.html'
@@ -30,13 +30,15 @@ class ChooseCharView(View):
     def get(self, request):
         return render(request, self.template_name)
 
+# FIX THIS DISPLAY ONE HERO
 class HeroView(View):
     template_name = 'characters/hero.html'
 
-    def get(self,request,name):
-        name = request.GET
-        character = Character.objects.get(name=name)
-        return render(request, self.template, {'character':character})
+    def get(self,request,character_id):
+        character = Character.objects.get(id=character_id)
+        attributes = HeroAttribute.objects.get(character__pk=character_id)
+        attacks = character.attack.all()
+        return render(request, self.template_name, {'character':character, 'attributes': attributes, 'attacks': attacks})
 
 def create_warrior(request):
     current_user = User.objects.filter(id=request.session['user_id'])

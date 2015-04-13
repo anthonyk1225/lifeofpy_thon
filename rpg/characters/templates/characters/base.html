@@ -1,6 +1,7 @@
 {% load staticfiles %}
 <html>
     <head>
+        <title>lifeofpy_thon Characters</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
@@ -14,9 +15,9 @@
                 {% block header %}
                 <nav class='navbar navbar-default navbar-static-top'>
                     <a href='/characters/character_selection/'>Make a new character</a>
-                    <a href='/characters/list/'>My Characters</a>
+                    <a id="character_list" href='/characters/list/'>My Characters</a>
                     <a href='/battlesystem/'>Battle!</a>
-                    <a href="/users/log_out/">Log Out</a>    
+                    <a href="/users/log_out/">Log Out</a>
                 </nav>
                 <div class="header">
                 <h1 class = "heading">Life of py_thon</h1>

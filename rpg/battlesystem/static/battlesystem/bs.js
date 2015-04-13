@@ -7,7 +7,7 @@ $(document).ready(function(){
 		var heroHitFor = $('#heropower')[0].innerHTML
 		var villianHitFor = $('#villianpower')[0].innerHTML
     	$('#villianhealth').html(parseInt(villianHealth) - heroHitFor)
-    	$('#update').html('Your attack hit for ' + heroHitFor + ' dmg.')
+    	$('#update').html('Your ' + $('.btn-primary')[0].innerHTML +' hit for ' + heroHitFor + ' dmg.')
     	if (parseInt($('#villianhealth')[0].innerHTML) < 1){
 			$('#update').html('You win!');
 				setTimeout(function() {

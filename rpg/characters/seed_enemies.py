@@ -9,7 +9,7 @@ def create_enemies():
         attacks = Attack.objects.all()
         attack = [random.choice(attacks)]
         new_enemy = Enemy.objects.create(name=random.choice(name), race=random.choice(race))
-        new_enemy.attack=attack
+        new_enemy.attack = attack
         new_enemy.save()
         EnemyAttribute.objects.create(hit_points=random.randint(20,40), power=random.randint(2,7), character=new_enemy)
 

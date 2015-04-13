@@ -1,12 +1,15 @@
 {% extends "characters/base.html" %}
 
 {% block content %}
-    <h1>{{character.name}}</h1>
-        <p>{{character.race}}</p>
+    <h1>Name: {{character.name}}</h1>
+        <p>Type: {{character.race}}</p>
     <ul>
         <li>Hit Points: {{attributes.hit_points}}</li>
         <li>Power: {{attributes.power}}</li>
-        <li>Attack: {{character.attack}}</li>
+        {% for attack in attacks %}
+        <li>Attack Name: {{attack.name}} </li>
+        <li>Attack Type: {{attack.element}} </li>
+        {% endfor %}
     </ul>
     <div class = 'pic'>
     {% if character.race == 'warrior' %}

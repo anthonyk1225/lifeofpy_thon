@@ -37,7 +37,8 @@ class HeroView(View):
     def get(self,request,character_id):
         character = Character.objects.get(id=character_id)
         attributes = HeroAttribute.objects.get(character__pk=character_id)
-        return render(request, self.template_name, {'character':character, 'attributes': attributes})
+        attacks = character.attack.all()
+        return render(request, self.template_name, {'character':character, 'attributes': attributes, 'attacks': attacks})
 
 def create_warrior(request):
     current_user = User.objects.filter(id=request.session['user_id'])

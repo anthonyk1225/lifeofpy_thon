@@ -10,7 +10,7 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-    if not self.key:
-        datetime_str = str(datetime.now())
-        self.key = hashlib.md5((self.username + datetime_str).encode('utf-8')).hexdigest()
-    super().save(*args, **kwargs)
+        if not self.key:
+            datetime_str = str(datetime.now())
+            self.key = hashlib.md5((self.username + datetime_str).encode('utf-8')).hexdigest()
+        super().save(*args, **kwargs)

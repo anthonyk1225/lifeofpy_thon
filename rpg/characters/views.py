@@ -22,13 +22,22 @@ class CharacterListView(View):
     def get(self, request):
         user_characters = Character.objects.filter(user__pk=request.session['user_id'])
         characters = [{'id':character.id,'name':character.name} for character in user_characters]
-        return JsonResponse({'characters':characters})
+        return JsonResponse({'characters': characters})
 
 class ChooseCharView(View):
     template_name = 'characters/characters.html'
 
     def get(self, request):
         return render(request, self.template_name)
+
+# FIX THIS DISPLAY ONE HERO
+class HeroView(View):
+    template_name = 'characters/hero.html'
+
+    def get(self,request,character_id):
+        character = Character.objects.get(id=character_id)
+        attributes = HeroAttribute.objects.get(character__pk=character_id)
+        return render(request, self.template_name, {'character':character, 'attributes': attributes})
 
 def create_warrior(request):
     current_user = User.objects.filter(id=request.session['user_id'])
@@ -54,16 +63,3 @@ def create_paladin(request):
     new_char.save()
     HeroAttribute.objects.create(hit_points=54,power=3,character=new_char)
     return redirect('/characters/')
-
-class HeroView(View):
-    template_name = 'characters/hero.html'
-
-    def get(self,request,name):
-        character = Character.objects.get(name=name)
-        character_attributes = HeroAttribute.objects.filter(character_id=character.id)
-        hit_points = [attribute.hit_points for attribute in character_attributes]
-        attack = [attribute.attack for attribute in character_attributes]
-        return render(request, self.template_name, {'character':character, 'hit_points':hit_points, 'attack':attack})
-
-class DeleteView(View):
-    pass

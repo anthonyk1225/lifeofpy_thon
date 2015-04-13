@@ -13,16 +13,17 @@
     <body>
         <div class ="container-fluid">
             <header>
-                {% block header %}
+                
                 <nav class='navbar navbar-default navbar-static-top'>
                     <a href='/characters/character_selection/'>Make a new character</a>
                     <a href='/battlesystem/'>Battle!</a>
                     <a href="/users/log_out/">Log Out</a>
+                {% block header %}
+                {% endblock %}
                 </nav>
                 <div class="header">
                 <h1 class = "heading">Life of py_thon</h1>
                 </div>
-                {% endblock %}
             </header>
             <div class="content">
                 {% block content %}

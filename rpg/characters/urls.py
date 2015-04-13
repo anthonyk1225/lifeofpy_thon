@@ -7,9 +7,12 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'form_practice.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-	url(r'^warrior/$', 'characters.views.create_warrior', name='createchar'),
-	url(r'^mage/$', 'characters.views.create_warrior', name='createchar'),
-	url(r'^paladin/$', 'characters.views.create_warrior', name='createchar'),
+    url(r'^$', view.WelcomeView.as_view(), name='welcome'),
+    url(r'^list/$', view.CharacterListView.as_view(), name='character_list'),
+    url(r'^character_selection/$', view.ChooseCharView.as_view(), name='create_character'),
+    url(r'^warrior/$', view.create_warrior, name='create_warrior'),
+    url(r'^mage/$', view.create_mage, name='create_mage'),
+    url(r'^paladin/$', view.create_paladin, name='create_paladin'),
 	url(r'^(?P<name>[\w\-]+)', HeroView.as_view(), name='get'),
 
 )

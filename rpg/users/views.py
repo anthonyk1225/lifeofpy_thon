@@ -16,7 +16,7 @@ class IndexView(View):
 
 class LogInView(View):
     form_class = UserForm
-
+    
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
@@ -42,17 +42,5 @@ class RegisterView(View):
             user = User(username=request.POST['username'], password=hashed)
             user.save()
             request.session['user_id'] = user.id
-            return render(request, 'users/welcome.html',{'username': user.username})
-        return redirect('/rpg/log_in/')
-
-class WelcomeView(View):
-    template = 'users/welcome.html'
-
-    def get(self,request):
-        if not request.session.get('user_id', False):
-            return redirect('/rpg/')
-        # request.session.set_expiry(120)
-        user = User.objects.get(id=request.session['user_id'])
-        user_characters = Character.objects.filter(user_id=user.id)
-        characters = [character.name for character in user_characters]
-        return render(request, self.template, {'username': user.username, 'characters':characters})
+            return redirect('/characters/')
+        return redirect('/users/')

@@ -1,4 +1,5 @@
 from django.db import models
+from characters.models import Character
 
 # Create your models here.
 class Battle(models.Model):
@@ -6,3 +7,4 @@ class Battle(models.Model):
     enemy_type = models.CharField(max_length=40)
     battle_date = models.DateTimeField(auto_now_add=True)
     was_victorious = models.BooleanField(default=False)
+

@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.generic import View
-from characters.models import Character, Attribute
+from characters.models import Character, HeroAttribute
+from attacks.models import Attack
+import random
 from users.models import User
 
 # Create your views here.
+attacks = Attack.objects.all()
 class WelcomeView(View):
     template = 'characters/welcome.html'
 
@@ -27,33 +30,35 @@ class ChooseCharView(View):
     def get(self, request):
         return render(request, self.template_name)
 
+class HeroView(View):
+    template_name = 'characters/hero.html'
+
+    def get(self,request,name):
+        name = request.GET
+        character = Character.objects.get(name=name)
+        return render(request, self.template, {'character':character})
+
 def create_warrior(request):
     current_user = User.objects.filter(id=request.session['user_id'])
     new_char = Character.objects.create(race='warrior', name=request.POST['name'], user=current_user[0])
-    Attribute.objects.create(hit_points=40,attack=5,character=new_char)
+    new_char.attack = [random.choice(attacks)]
+    new_char.save()
+    HeroAttribute.objects.create(hit_points=40,power=5,character=new_char)
     return redirect('/characters/')
 
 def create_mage(request):
     current_user = User.objects.filter(id=request.session['user_id'])
     new_char = Character.objects.create(race='mage', name=request.POST['name'], user=current_user[0])
-    Attribute.objects.create(hit_points=22,attack=8,character=new_char)
+    new_char.attack = [random.choice(attacks)]
+    new_char.save()
+    HeroAttribute.objects.create(hit_points=22,power=8,character=new_char)
     return redirect('/characters/')
 
 def create_paladin(request):
-class HeroView(View):
-	template_name = 'characters/hero.html'
+    print(request.POST)
     current_user = User.objects.filter(id=request.session['user_id'])
     new_char = Character.objects.create(race='paladin', name=request.POST['name'], user=current_user[0])
-    Attribute.objects.create(hit_points=54,attack=3,character=new_char)
+    new_char.attack = [random.choice(attacks)]
+    new_char.save()
+    HeroAttribute.objects.create(hit_points=54,power=3,character=new_char)
     return redirect('/characters/')
-
-
-class HeroView(View):
-    template_name = 'characters/hero.html'
-
-	def get(self,request,name):
-		character = Character.objects.get(name=name)
-		character_attributes = Attribute.objects.filter(character_id=character.id)
-		attributes = [attribute for attribute in character_attributes]
-		# return render(request, self.template, {'username': user.username, 'characters':characters})
-		return render(request, self.template_name, {'character':character, 'attributes':attributes})

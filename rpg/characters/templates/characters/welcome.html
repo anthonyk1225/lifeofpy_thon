@@ -1,5 +1,7 @@
 {% extends "characters/base.html" %}
-
+    {% block content %}
+    <a href="/characters/character_list/">Character List</a>
+    {% endblock %}
     {% block scripts %}
         <script id="welcomePage" type="text/html">
             <h1 class="heading">Welcome {{ username }}! </h1>

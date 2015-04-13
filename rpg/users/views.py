@@ -25,7 +25,8 @@ class LogInView(View):
             user[0].save()
             request.session['user_id']=user[0].id
             return redirect('/characters/')
-        return JsonResponse({'error': 'Invalid Username or Password'})
+        return redirect('/characters/')
+        # return JsonResponse({'error': 'Invalid Username or Password'})
 
 class LogOutView(View):
     def get(self, request):

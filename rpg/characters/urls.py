@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from characters.views import HeroView, WelcomeView,CharacterListView
 import characters.views as view
 
 urlpatterns = patterns('',
@@ -9,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^warrior/$', view.create_warrior, name='create_warrior'),
     url(r'^mage/$', view.create_mage, name='create_mage'),
     url(r'^paladin/$', view.create_paladin, name='create_paladin'),
+    url(r'^(?P<name>[\w\-]+)', HeroView.as_view(), name='get'),
 )

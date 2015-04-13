@@ -58,8 +58,9 @@ def create_paladin(request):
 class HeroView(View):
     template_name = 'characters/hero.html'
 
-	def get(self,request,name):
-		character = Character.objects.get(name=name)
-		character_attributes = Attribute.objects.filter(character_id=character.id)
-		attributes = [attribute for attribute in character_attributes]
-		return render(request, self.template_name, {'character':character, 'attributes':attributes})
+    def get(self,request,name):
+        character = Character.objects.get(name=name)
+        character_attributes = HeroAttribute.objects.filter(character_id=character.id)
+        hit_points = [attribute.hit_points for attribute in character_attributes]
+        attack = [attribute.attack for attribute in character_attributes]
+        return render(request, self.template_name, {'character':character, 'hit_points':hit_points, 'attack':attack})

@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from characters.views import HeroView,WelcomeView, CharListView
+from characters.views import HeroView, WelcomeView,CharacterListView
 import characters.views as view
 
 urlpatterns = patterns('',

@@ -7,7 +7,7 @@
                 <p>{{ username }}'s Heros</p>
                 {% verbatim %}
                 {{#characters}}
-                    <li><a href = "/rpg/{{ id }}">{{name}}</a></li>
+                    <li><a href = "/characters/{{ name }}">{{name}}</a></li>
                 {{/characters}}
                 {{^characters}}
                 <p>No characters made yet</p>

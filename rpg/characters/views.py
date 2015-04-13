@@ -30,14 +30,6 @@ class ChooseCharView(View):
     def get(self, request):
         return render(request, self.template_name)
 
-class HeroView(View):
-    template_name = 'characters/hero.html'
-
-    def get(self,request,name):
-        name = request.GET
-        character = Character.objects.get(name=name)
-        return render(request, self.template, {'character':character})
-
 def create_warrior(request):
     current_user = User.objects.filter(id=request.session['user_id'])
     new_char = Character.objects.create(race='warrior', name=request.POST['name'], user=current_user[0])
@@ -62,3 +54,12 @@ def create_paladin(request):
     new_char.save()
     HeroAttribute.objects.create(hit_points=54,power=3,character=new_char)
     return redirect('/characters/')
+
+class HeroView(View):
+    template_name = 'characters/hero.html'
+
+	def get(self,request,name):
+		character = Character.objects.get(name=name)
+		character_attributes = Attribute.objects.filter(character_id=character.id)
+		attributes = [attribute for attribute in character_attributes]
+		return render(request, self.template_name, {'character':character, 'attributes':attributes})

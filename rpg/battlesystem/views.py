@@ -10,12 +10,16 @@ import random
 class BattleStart(View):
 	template = 'battlesystem/index.html'
 
-	def get(self,request):
-		current_user = User.objects.filter(id= request.session['user_id'])
-		toons = Character.objects.filter(user=current_user[0])
-		chosen_toon = random.choice(toons)
+	def get(self,request, character_id):
+		toons = Character.objects.filter(pk=character_id,user__key=request.session.get('key',False))
+		chosen_toon = toons[0]
 		enemy_toon = random.choice(Enemy.objects.all())
-		return render(request, self.template, {"hero": chosen_toon, "villian": enemy_toon, 
-		"herostats":chosen_toon.heroattribute_set.filter()[0], "villianstats":enemy_toon.enemyattribute_set.filter()[0],
-		"heroattack":chosen_toon.attack.filter()[0], "villianattack": enemy_toon.attack.filter()[0]})
-
+		data = {
+			"hero": chosen_toon, 
+			"villian": enemy_toon, 
+			"herostats":chosen_toon.heroattribute_set.filter()[0], 
+			"villianstats":enemy_toon.enemyattribute_set.filter()[0],
+			"heroattack":chosen_toon.attack.filter()[0], 
+			"villianattack": enemy_toon.attack.filter()[0]
+		}
+		return render(request, self.template, data)

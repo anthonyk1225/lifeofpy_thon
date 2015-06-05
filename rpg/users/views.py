@@ -43,5 +43,5 @@ class RegisterView(View):
             user = User(username=request.POST['username'], password=hashed)
             user.save()
             request.session['key'] = user.key
-            return redirect('//')
+            return redirect('/characters/')
         return redirect('/users/')

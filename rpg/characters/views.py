@@ -12,23 +12,17 @@ class WelcomeView(View):
     template = 'characters/welcome.html'
 
     def get(self,request):
-        if not request.session.get('user_id', False):
+        if not request.session.get('key', False):
             return redirect('/users/')
         # request.session.set_expiry(120)
-        user = User.objects.get(id=request.session['user_id'])
+        user = User.objects.get(key=request.session['key'])
         return render(request, self.template,{'username': user.username})
 
 class CharacterListView(View):
     def get(self, request):
-        user_characters = Character.objects.filter(user__pk=request.session['user_id'])
+        user_characters = Character.objects.filter(user__key=request.session['key'])
         characters = [{'id':character.id,'name':character.name} for character in user_characters]
         return JsonResponse({'characters': characters})
-
-class ChooseCharView(View):
-    template_name = 'characters/characters.html'
-
-    def get(self, request):
-        return render(request, self.template_name)
 
 # FIX THIS DISPLAY ONE HERO
 class HeroView(View):
@@ -41,7 +35,7 @@ class HeroView(View):
         return render(request, self.template_name, {'character':character, 'attributes': attributes, 'attacks': attacks})
 
 def create_warrior(request):
-    current_user = User.objects.filter(id=request.session['user_id'])
+    current_user = User.objects.filter(key=request.session['key'])
     new_char = Character.objects.create(race='warrior', name=request.POST['name'], user=current_user[0])
     new_char.attack = [random.choice(attacks)]
     new_char.save()
@@ -49,7 +43,7 @@ def create_warrior(request):
     return redirect('/characters/')
 
 def create_mage(request):
-    current_user = User.objects.filter(id=request.session['user_id'])
+    current_user = User.objects.filter(key=request.session['key'])
     new_char = Character.objects.create(race='mage', name=request.POST['name'], user=current_user[0])
     new_char.attack = [random.choice(attacks)]
     new_char.save()
@@ -58,7 +52,7 @@ def create_mage(request):
 
 def create_paladin(request):
     print(request.POST)
-    current_user = User.objects.filter(id=request.session['user_id'])
+    current_user = User.objects.filter(key=request.session['key'])
     new_char = Character.objects.create(race='paladin', name=request.POST['name'], user=current_user[0])
     new_char.attack = [random.choice(attacks)]
     new_char.save()

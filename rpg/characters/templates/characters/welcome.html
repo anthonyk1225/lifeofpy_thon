@@ -1,15 +1,26 @@
 {% extends "characters/base.html" %}
-    {% block header %}
-    <a id="character_list" href="/characters/list/">Character List</a>
-    {% endblock %}
+
     {% block scripts %}
         <script id="welcomePage" type="text/html">
-            <!-- <h1 class="heading">Welcome {{ username }}! </h1>-->
             <div class="characters">
                 <p>{{ username }}s Heros</p>
                 {% verbatim %}
                 {{#characters}}
                     <li><a href = "/characters/{{ id }}">{{name}}</a></li>
+                {{/characters}}
+                {{^characters}}
+                <p>No characters made yet</p>
+                {{/characters}}
+                {% endverbatim %}
+            </div>
+        </script>
+
+        <script id="character_selection" type="text/html">
+            <div class="characters">
+                <p>Select Hero</p>
+                {% verbatim %}
+                {{#characters}}
+                    <li><a href="/battlesystem/{{ id }}/">{{name}}</a></li>
                 {{/characters}}
                 {{^characters}}
                 <p>No characters made yet</p>
@@ -42,10 +53,10 @@
         </script>
         {% endverbatim %}
 
-            <script id='classes' type='txt/html'>
+        <script id='classes' type='text/html'>
             <h2>The Warrior</h2>
             <img id='warrior' src='https://d1nneesl1sywb9.cloudfront.net/global/includes/images/hero-warrior.jpg' height='300' class='img-circle image-responive center-block'></a>
-            <form role="form" action='/characters/warrior/' method="POST">
+            <form class="create" role="form" action='/characters/warrior/' method="POST">
                 {% csrf_token %}
             <div class="form-group">
                 <label for="nameSelection">Name</label>
@@ -56,7 +67,7 @@
 
             <h2>The Mage</h2>
             <img id='mage' src='http://th01.deviantart.net/fs71/PRE/i/2014/021/5/4/mage_by_josearias-d6ckiyf.jpg' height='300' class='img-circle image-responive center-block'></a>
-            <form role="form" action='/characters/mage/' method="POST">
+            <form class="create" role="form" action='/characters/mage/' method="POST">
                     {% csrf_token %}
             <div class="form-group">
                 <label for="nameSelection">Name</label>
@@ -67,7 +78,7 @@
 
             <h2>The Paladin </h2>
             <img id='paladin' src='http://www.primagames.com/media/images/news/Hearthstone-Paladin.jpg' height='300' class='img-circle image-responive center-block'></a>
-            <form role="form" action='/characters/paladin/' method="POST">
+            <form class="create" role="form" action='/characters/paladin/' method="POST">
                     {% csrf_token %}
             <div class="form-group">
                 <label for="nameSelection">Name</label>

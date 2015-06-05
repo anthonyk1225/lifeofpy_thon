@@ -3,8 +3,5 @@ from django.contrib import admin
 from battlesystem.views import BattleStart
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'form_practice.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-	url(r'^$', BattleStart.as_view(), name='battle'),
+	url(r'^(?P<character_id>[0-9]+)/$', BattleStart.as_view(), name='battle'),
 )

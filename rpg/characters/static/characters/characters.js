@@ -1,16 +1,17 @@
 $(document).ready(function(){
-    $.get('/characters/list/', function(data){
+    $('#battle').on('click',function(event){
+        event.preventDefault();
         $('.content').empty();
-        var template = $('#welcomePage').html();
-        var output = Mustache.render(template,data);
-        $('.content').append(output);
+        $.get('/characters/list/', function(data){
+            var template = $('#character_selection').html();
+            var output = Mustache.render(template,data);
+            $('.content').append(output);
+        });
     });
-
     $('#character_list').on('click',function(event){
         event.preventDefault();
         $('.content').empty();
         $.get('/characters/list/', function(data){
-            $('.content').empty();
             var template = $('#welcomePage').html();
             var output = Mustache.render(template,data);
             $('.content').append(output);
@@ -20,12 +21,14 @@ $(document).ready(function(){
     $('#make_character').on('click',function(event){
         event.preventDefault();
         $('.content').empty();
-        $('#classes').css({'display': 'block'})
+        var template = $('#classes').html();
+        var output = Mustache.render(template);
+        $('.content').append(output);
     });
 
-    $('#classes form').on('submit',function(event){
+    $('.content').on('submit', '.create',function(event){
         event.preventDefault();
-        $('.content').empty();
-        $('#classes').css({'display': 'none'});
+        $.post(this.action ,$(this).serialize());
+        $('#character_list').trigger('click');
     });
 });

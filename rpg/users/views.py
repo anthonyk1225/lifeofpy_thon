@@ -23,7 +23,7 @@ class LogInView(View):
         user = User.objects.filter(username=username)
         if len(user) == 1 and check_password(password,user[0].password):
             user[0].save()
-            request.session['user_id']=user[0].id
+            request.session['key']=user[0].key
             return redirect('/characters/')
         return redirect('/characters/')
         # return JsonResponse({'error': 'Invalid Username or Password'})
@@ -42,6 +42,6 @@ class RegisterView(View):
             hashed = make_password(request.POST['password'])
             user = User(username=request.POST['username'], password=hashed)
             user.save()
-            request.session['user_id'] = user.id
-            return redirect('/characters/')
+            request.session['key'] = user.key
+            return redirect('//')
         return redirect('/users/')

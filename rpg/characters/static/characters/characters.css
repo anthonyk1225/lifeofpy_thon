@@ -1,24 +1,28 @@
-.navbar{
+.navbar {
     border-bottom: 3px solid black;
 }
 
-h1.heading{
+h1.heading {
     color: black;
     float: right;
 }
 
-header{
+header {
 	background-color: #001f3f;
 	opacity: 1;
 }
 
-a{
+a {
     text-decoration: none;
     margin-left: 1em;
 }
 
-#boromir{
+#boromir {
 	margin-top:4em;
+}
+
+#classes {
+    display: none;
 }
 
 #classes h2{
@@ -30,14 +34,16 @@ footer {
 	opacity: .4;
 }
 
-form label{
-    color:white;
+form label {
+    color: white;
 }
-p{
+
+p {
     font-size: 3em;
     border-bottom: 1px solid black;
     font-weight: bold;
 }
+
 .pic {
     float: left;
 }

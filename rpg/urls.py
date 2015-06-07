@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     url(r'^rpg/', include('users.urls')),
     url(r'^fight/', include('battlesystem.urls')),
     url(r'^users/', include('users.urls')),
-    url(r'^/$', include('users.urls')),
+    url(r'^$', include('users.urls')),
     url(r'^characters/', include('characters.urls')),
 )

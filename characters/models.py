@@ -1,8 +1,6 @@
 from django.db import models
 from users.models import User
 from attacks.models import Attack
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericForeignKey
 
 # Create your models here.
 class Character(models.Model):

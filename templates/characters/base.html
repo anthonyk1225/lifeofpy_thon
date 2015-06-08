@@ -3,12 +3,14 @@
 <html>
     <head>
         <title>lifeofpy_thon Characters</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+        {% block files %}
+            <script src="{% static "characters/characters.js" %}"></script>
+        {% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script src="{%static "characters/characters.js"%}"></script>
-         <link rel="stylesheet" href="{% static "characters/characters.css" %}">
+        <link rel="stylesheet" href="{% static "characters/characters.css" %}">
     </head>
     <body>
         <div class ="container-fluid">

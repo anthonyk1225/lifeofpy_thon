@@ -9,21 +9,9 @@ class Character(models.Model):
     attack = models.ManyToManyField(Attack)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True, blank=True)
 
-class Enemy(models.Model):
-    name = models.CharField(max_length=40)
-    race = models.CharField(max_length=80)
-    attack = models.ManyToManyField(Attack)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class HeroAttribute(models.Model):
+class Attribute(models.Model):
     hit_points = models.IntegerField()
     power = models.IntegerField()
     character = models.ForeignKey(Character)
-
-class EnemyAttribute(models.Model):
-    hit_points = models.IntegerField()
-    power = models.IntegerField()
-    character = models.ForeignKey(Enemy)

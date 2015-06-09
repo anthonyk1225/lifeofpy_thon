@@ -7,20 +7,19 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contenttypes', '0002_remove_content_type_name'),
+        ('characters', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='Battle',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('opponent_name', models.CharField(max_length=40)),
                 ('opponent_race', models.CharField(max_length=80)),
                 ('battle_date', models.DateTimeField(auto_now_add=True)),
                 ('was_victorious', models.BooleanField(default=False)),
-                ('object_id', models.PositiveIntegerField()),
-                ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
+                ('character', models.ForeignKey(to='characters.Character')),
             ],
         ),
     ]

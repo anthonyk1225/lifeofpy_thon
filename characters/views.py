@@ -1,8 +1,10 @@
 import random
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.generic import View
-from characters.models import Character, HeroAttribute
+
+from characters.models import Character, Attribute
 from attacks.models import Attack
 from users.models import User
 
@@ -29,7 +31,7 @@ class HeroView(View):
 
     def get(self,request,character_id):
         character = Character.objects.get(id=character_id)
-        attributes = HeroAttribute.objects.get(character__pk=character_id)
+        attributes = Attribute.objects.get(character__pk=character_id)
         attacks = character.attack.all()
         return render(request, self.template_name, {'character':character, 'attributes': attributes, 'attacks': attacks})
 
@@ -40,7 +42,7 @@ class CreateHeroView(View):
         new_char = Character.objects.create(race=request.POST['race'], name=request.POST['name'], user=current_user[0])
         new_char.attack = [random.choice(attacks)]
         new_char.save()
-        HeroAttribute.objects.create(hit_points=40,power=5,character=new_char)
+        Attribute.objects.create(hit_points=40,power=5,character=new_char)
         return redirect('/characters/')
 
 class EditHeroView(View):
@@ -49,7 +51,7 @@ class EditHeroView(View):
     def get(self, request):
         character = Character.objects.filter(id=request.GET['character_id'],user__key=request.session['key'])
         if len(character) == 1:
-            return render(request, self.template_name, {'character': character[0], 'attacks':character[0].attack.all(),'attributes': character[0].heroattribute_set.all()})
+            return render(request, self.template_name, {'character': character[0], 'attacks':character[0].attack.all(),'attributes': character[0].attribute_set.all()})
         return redirect('/characters/')
 
     def post(self, request):
@@ -60,11 +62,14 @@ class EditHeroView(View):
             return redirect('/characters/%s/' % character[0].id)
         return redirect('/characters/')
 
+# This Just Removes the Character
 class DeleteHeroView(View):
 
     def post(self, request):
         character = Character.objects.filter(id=request.POST['character_id'],user__key=request.session['key'])
+        user = User.objects.get(key=request.session['key'])
         if len(character) == 1:
-            character[0].delete()
+            user.character_set.remove(character[0])
+            print(character[0].user.username)
             return redirect('/characters/')
         return redirect('/characters/')

@@ -52,6 +52,8 @@ coverage.xml
 settings_local.py
 start.sh
 
+.DS_Store
+
 # Sphinx documentation
 docs/_build/
 

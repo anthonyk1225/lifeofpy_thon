@@ -67,4 +67,4 @@ class DeleteHeroView(View):
         if len(character) == 1:
             character[0].delete()
             return redirect('/characters/')
-        return redirect('/characters/')
+        return redirect('/users/')

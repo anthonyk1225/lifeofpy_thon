@@ -64,6 +64,7 @@ class DeleteHeroView(View):
 
     def post(self, request):
         character = Character.objects.filter(id=request.POST['character_id'],user__key=request.session['key'])
+        return redirect('/characters/')
         if len(character) == 1:
             character.delete()
             return redirect('/characters/')

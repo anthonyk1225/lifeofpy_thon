@@ -32,33 +32,36 @@
         <script id='classes' type='text/html'>
             <h2>The Warrior</h2>
             <img id='warrior' src='{% static "warrior.jpg" %}' height='300' class='img-circle image-responive center-block'></a>
-            <form class="create" role="form" action='/characters/warrior/' method="POST">
+            <form class="create" role="form" action='/characters/create/' method="POST">
                 {% csrf_token %}
             <div class="form-group">
                 <label for="nameSelection">Name</label>
-                <input name="name" type="name" class="form-conrol" placeholder="Select a name">
+                <input name="name" type="text" class="form-conrol" placeholder="Select a name">
+                <input name="race" type="hidden" value="warrior">
                 <button class="btn-primary" type="submit" value="Submit">Submit</button>
             </div>
             </form>
 
             <h2>The Mage</h2>
             <img id='mage' src='{% static "mage.jpg" %}' height='300' class='img-circle image-responive center-block'></a>
-            <form class="create" role="form" action='/characters/mage/' method="POST">
+            <form class="create" role="form" action='/characters/create/' method="POST">
                     {% csrf_token %}
             <div class="form-group">
                 <label for="nameSelection">Name</label>
-                <input name="name" type="name" class="form-conrol" placeholder="Select a name">
+                <input name="name" type="text" class="form-conrol" placeholder="Select a name">
+                <input name="race" type="hidden" value="mage">
                 <button class="btn-primary" type="submit">Submit</button>
             </div>
             </form>
 
             <h2>The Paladin </h2>
             <img id='paladin' src='{% static "paladin.jpg" %}' height='300' class='img-circle image-responive center-block'></a>
-            <form class="create" role="form" action='/characters/paladin/' method="POST">
+            <form class="create" role="form" action='/characters/create/' method="POST">
                     {% csrf_token %}
             <div class="form-group">
                 <label for="nameSelection">Name</label>
-                <input name="name" type="name" class="form-conrol" placeholder="Select a name">
+                <input name="name" type="text" class="form-conrol" placeholder="Select a name">
+                <input name="race" type="hidden" value="paladin">
                 <button class="btn-primary" type="submit">Submit</button>
             </div>
             </form>

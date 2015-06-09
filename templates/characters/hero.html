@@ -1,11 +1,13 @@
 {% extends "characters/base.html" %}
+
 {% block files %}
 {% endblock %}
+
 {% block header %}
     <a id="home" href="/characters/">Home</a>
     <a href="/users/log_out/">Log Out</a>
 {% endblock %}
-{% load staticfiles %}
+
 {% block content %}
     <div id="character_page">
         <h1>Name: {{character.name}}</h1>
@@ -18,14 +20,22 @@
             <li>Attack Type: {{attack.element}} </li>
             {% endfor %}
         </ul>
-        <div class = 'pic'>
-        {% if character.race == 'warrior' %}
-        <img id='warrior' src='{% static "warrior.jpg" %}' height='300' class='img-circle image-responive center-block'></a>
-        {% elif character.race == 'mage' %}
-        <img id='mage' src='{% static "mage.jpg" %}' height='300' class='img-circle image-responive center-block'></a>
-        {% else %}
-        <img id='paladin' src='{% static "paladin.jpg" %}' height='300' class='img-circle image-responive center-block'></a>
+
+        <form class="delete" role="form" action='/characters/delete/' method="POST">
+            {% csrf_token %}
+            <input name="character_id" type="hidden" value={{ character.id }}>
+            <button class="btn-primary" type="submit">Delete</button>
+        </form>
+
+        <form class="edit" role="form" action='/characters/edit/' method="GET">
+            {% csrf_token %}
+            <input name="character_id" type="hidden" value={{ character.id }}>
+            <button class="btn-primary" type="submit">Edit</button>
+        </form>
+
+        <div class='pic'>
+            {% load staticfiles %}
+            <img src='{% static "" %}{{ character.race }}.jpg' height='300' class='img-circle image-responive center-block'></a>
         </div>
-    {% endif %}
     </div>
 {% endblock %}

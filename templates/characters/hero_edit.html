@@ -1,0 +1,34 @@
+{% extends "characters/base.html" %}
+
+{% block files %}
+{% endblock %}
+
+{% block header %}
+    <a id="home" href="/characters/">Home</a>
+    <a id="hero_info" href="/characters/{{character.id}}/">Hero Info</a>
+    <a href="/users/log_out/">Log Out</a>
+{% endblock %}
+
+{% block content %}
+    <div id="character_page">
+        <form id="edit_hero" role="form" action='/characters/edit/' method="POST">
+            {% csrf_token %}
+            <input name="character_id" type="hidden" value={{ character.id }}>
+            <h1>Name: <input name="name" type="text" value="{{character.name}}"></h1>
+            <p>Type: {{character.race}}</p>
+        </form>
+        <ul>
+            <li>Hit Points: {{attributes.hit_points}}</li>
+            <li>Power: {{attributes.power}}</li>
+            {% for attack in attacks %}
+                <li>Attack Name: {{attack.name}} </li>
+                <li>Attack Type: {{attack.element}} </li>
+            {% endfor %}
+        </ul>
+        <input form="edit_hero" type="submit" value="Submit">
+        <div class='pic'>
+            {% load staticfiles %}
+            <img src='{% static "" %}{{ character.race }}.jpg' height='300' class='img-circle image-responive center-block'></a>
+        </div>
+    </div>
+{% endblock %}

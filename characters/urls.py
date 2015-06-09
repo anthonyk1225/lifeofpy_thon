@@ -4,9 +4,9 @@ import characters.views as view
 
 urlpatterns = patterns('',
     url(r'^$', view.WelcomeView.as_view(), name='welcome'),
-    url(r'^list/$', view.CharacterListView.as_view(), name='character_list'),
-    url(r'^warrior/$', view.create_warrior, name='create_warrior'),
-    url(r'^mage/$', view.create_mage, name='create_mage'),
-    url(r'^paladin/$', view.create_paladin, name='create_paladin'),
-    url(r'^(?P<character_id>[0-9]+)/', view.HeroView.as_view(), name='get_character'),
+    url(r'^list/$', view.ListHeroView.as_view(), name='hero_list'),
+    url(r'^create/$', view.CreateHeroView.as_view(), name='create_hero'),
+    url(r'^edit/$', view.EditHeroView.as_view(), name='edit_hero'),
+    url(r'^delete/$', view.DeleteHeroView.as_view(), name='delete_hero'),
+    url(r'^(?P<character_id>[0-9]+)/', view.HeroView.as_view(), name='get_hero'),
 )

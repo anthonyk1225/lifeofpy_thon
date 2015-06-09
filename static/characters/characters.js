@@ -10,7 +10,7 @@ $(document).ready(function(){
         });
     });
 
-    $('#character_list').trigger('click');
+    $('#character_list').triggerHandler('click');
 
     $('#battle').on('click',function(event){
         event.preventDefault();

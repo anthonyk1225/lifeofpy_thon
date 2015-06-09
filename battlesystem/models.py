@@ -1,10 +1,14 @@
 from django.db import models
-from characters.models import Character
+from django.contrib.contenttypes import GenericForeignKey
+from django.contrib.contenttypes import ContentType
 
 # Create your models here.
 class Battle(models.Model):
-    character = models.ForeignKey(Character)
-    enemy_type = models.CharField(max_length=40)
+    opponent_name = models.CharField(max_length=40)
+    opponent_race = models.CharField(max_length=80)
     battle_date = models.DateTimeField(auto_now_add=True)
     was_victorious = models.BooleanField(default=False)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
 

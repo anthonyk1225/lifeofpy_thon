@@ -70,6 +70,5 @@ class DeleteHeroView(View):
         user = User.objects.get(key=request.session['key'])
         if len(character) == 1:
             user.character_set.remove(character[0])
-            print(character[0].user.username)
             return redirect('/characters/')
         return redirect('/characters/')

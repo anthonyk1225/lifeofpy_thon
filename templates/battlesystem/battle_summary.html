@@ -1,0 +1,23 @@
+{% extends "battlesystem/base.html" %}
+
+{% block header %}
+    <a id="home" href="/characters/">Home</a>
+    <a href="/users/log_out/">Log Out</a>
+{% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Opponent Name</th><th>Opponent Race</th><th>Victory</th><th>Battle Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for report in battles %}
+        <tr>
+            <td>{{report.opponent_name}}</td><td>{{report.opponent_race}}</td><td>{{report.was_victorious}}</td><td>{{report.battle_date}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

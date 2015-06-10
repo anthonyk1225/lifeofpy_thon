@@ -8,4 +8,3 @@ class Battle(models.Model):
     battle_date = models.DateTimeField(auto_now_add=True)
     was_victorious = models.BooleanField(default=False)
     character = models.ForeignKey(Character)
-

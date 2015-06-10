@@ -9,20 +9,26 @@
 	<div id='hero'>
 		<p>Your current health: </p> 
 		<p id='herohealth'>{{herostats.hit_points}}</p>
-		<img src='http://fc07.deviantart.net/fs70/f/2012/065/d/0/farengar_sprite_by_valdrec-d4rz8rs.png' width='200'>
+		<img src='https://fc07.deviantart.net/fs70/f/2012/065/d/0/farengar_sprite_by_valdrec-d4rz8rs.png' width='200'>
 		<button class="btn-primary" type="submit">{{heroattack.name}}</button>
 	</div>
 
 	<div id='villian'>
 		<p>{{villian.name}}'s current health: </p>
 		<p id='villianhealth'>{{villianstats.hit_points}}</p>
-		<img src='http://fc01.deviantart.net/fs71/f/2012/117/4/6/8_bit_cloud_sprite_by_phd_bird-d4xq4g6.png'width='200'>
+		<img src='https://fc01.deviantart.net/fs71/f/2012/117/4/6/8_bit_cloud_sprite_by_phd_bird-d4xq4g6.png'width='200'>
 	</div>
 </div>
 
 <div id='heropower' class='hidden'>{{herostats.power}}</div>
 <div id='villianpower' class='hidden'>{{villianstats.power}}</div>
 
-
 <div id='update'></div>
+<div id='bout'>
+    <form id="battle_log" role="form" action="/battlesystem/battle_log/{{hero.id}}/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="winner" value="{{hero.id}}">
+        <input type="hidden" name="loser" value="{{villian.id}}">
+    </form>
+</div>
 {%endblock%}

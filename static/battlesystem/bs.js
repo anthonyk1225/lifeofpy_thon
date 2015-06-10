@@ -3,17 +3,18 @@
 // }
 
 // function Fighter(){
-    
+
 // }
 
-// function battleLog(winner, loser){
-//     $("battle")
-//     $.post('/battlesystem/', {'winner': winner, 'loser': loser}, function(data){
-
-//     });
-// }
+function battleLog(winner, loser){
+    $("input[name='winner']").val(winner);
+    $("input[name='loser']").val(loser);
+    // triggerHandler did not work
+    $("#battle_log").trigger("submit");
+}
 
 $(document).ready(function(){
+
     $('.btn-primary').on('click', function(event){
     	event.preventDefault();
 
@@ -28,22 +29,22 @@ $(document).ready(function(){
     	
 
     	if (parseInt($('#villianhealth')[0].innerHTML) < 1){
-			$('#update').html('You win!');
+            $('#update').html('You win!');
+            setTimeout(function() {
+                battleLog($("input[name='winner']").val(), $("input[name='loser']").val());
+            },1500);
 
-			setTimeout(function() {
-	    		window.location.replace('/characters/')
-	  		},1500);
 		}
 		else{
-	    	setTimeout(function() {
+	    	setTimeout(function(){
 	    		$('#herohealth').html(parseInt(heroHealth)-villianHitFor);
 	    		$('#update').html('Villians attack hit for ' + villianHitFor + ' dmg.');
 	  		},1500);
-			if (parseInt($('#herohealth')[0].innerHTML) < 1){
-				$('#update').html('You Lose!');
-				setTimeout(function() {
-	    			window.location.replace('/characters/')
-	  			},1500);
+			if (parseInt($('#herohealth')[0].innerHTML) < 1){  
+                $('#update').html('You Lose!');
+                setTimeout(function() {
+                    battleLog($("input[name='loser']").val(), $("input[name='winner']").val());
+                },1500);
 			}
 		}
 	});
